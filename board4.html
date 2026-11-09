@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Hopemark Health – Print Production Spec Sheet</title><style>
+@import url('assets/fonts/fonts.css');
+.pg{--blk:#111111;--lav:#DFC5EE;--lav2:#C8A8E9;--soft:#F4ECF9;--call:#F3EAF9;--mut:#4B4753;
+ position:relative;width:760px;aspect-ratio:8.5/11;background:#fff;color:#111;
+ font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-size:10px;line-height:1.42;overflow:hidden;
+ display:flex;flex-direction:column;-webkit-print-color-adjust:exact;print-color-adjust:exact;text-align:left;
+ font-feature-settings:'kern' 1}
+.pg *{box-sizing:border-box;margin:0;padding:0}
+.pg img{display:block}
+.pg h1,.pg h3,.pg h4,.pg h5,.pg .sub,.pg .stat,.pg .pill,.pg .bt1{font-family:'Plus Jakarta Sans',Inter,'Helvetica Neue',Arial,sans-serif}
+.pg .bl{list-style:none}
+.pg .bl li{position:relative;padding-left:13px;margin-bottom:6px;font-size:11.3px;line-height:1.4}
+.pg .bl li::before{content:'';position:absolute;left:0;top:.42em;width:5.5px;height:5.5px;background:var(--lav2);transform:skewX(-18deg)}
+.pg h3{font-size:14px;font-weight:800;letter-spacing:-.01em;margin-bottom:11px;padding-top:11px;position:relative}
+.pg h3::before{content:'';position:absolute;left:0;top:0;width:26px;height:3.5px;background:var(--lav2)}
+/* contact bits */
+.pg .cts{display:flex;gap:24px}
+.pg .ct{display:flex;flex-direction:column;gap:2px}
+.pg .ctl{font-size:7.3px;letter-spacing:.2em;font-weight:600;color:var(--lav)}
+.pg .ctv{font-family:'Plus Jakarta Sans',Inter,sans-serif;font-size:13px;font-weight:700;color:#fff;letter-spacing:-.005em;white-space:nowrap}
+.pg .cts.stack{flex-direction:column;gap:6px}
+.pg .cts.stack .ct{flex-direction:row;align-items:baseline;gap:9px}
+.pg .cts.stack .ctl{width:44px;flex:0 0 44px}
+.pg .cts.stack .ctv{font-size:11.5px}
+.pg .qr{display:flex;flex-direction:column;align-items:center;gap:4px;flex:0 0 auto}
+.pg .qrb{background:#fff;padding:4px;width:68px;height:68px}
+.pg .qrb img{width:100%;height:100%}
+.pg .qr.sm .qrb{width:62px;height:62px}
+.pg .qrt{font-size:8.6px;font-weight:600;color:#fff;letter-spacing:.02em}
+.pg .bar{background:var(--blk);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 34px}
+.pg .bt1{font-size:13px;font-weight:800;letter-spacing:-.01em;color:#fff}
+.pg .bt2{font-size:10px;color:#cfcfd6;margin-top:2px}
+.pg .logo{height:36px;width:auto;align-self:flex-start}
+.pg .sub{font-weight:600}
+.pg .pill{background:var(--blk);color:#fff;border-radius:99px;padding:7px 16px;font-size:10.8px;font-weight:600;align-self:flex-start;letter-spacing:.01em;font-family:Inter,sans-serif!important}
+.pg .intro{font-size:10.6px;line-height:1.5}
+/* modules (shared back) */
+.pg .callout{background:var(--call);padding:13px 16px 14px;border-left:4px solid var(--lav2)}
+.pg .callout h5{font-size:14.5px;font-weight:800;letter-spacing:-.01em;margin-bottom:4px}
+.pg .callout p{font-size:10.9px;line-height:1.48}
+.pg .mod{position:relative;padding-top:10px;border-top:1px solid #d8d3df}
+.pg .mod::before{content:'';position:absolute;left:0;top:-2px;width:34px;height:3px;background:var(--blk)}
+.pg .mh{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+.pg .mh h4{font-size:22px;font-weight:800;letter-spacing:-.025em;line-height:1.05}
+.pg .ms{font-size:10.8px;font-weight:600;color:var(--mut)}
+.pg .mod p{font-size:10.7px;line-height:1.46;margin-bottom:6px}
+.pg .mod p b{font-weight:700}
+.pg .m2c{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pg .mrow{display:grid;grid-template-columns:1fr 196px;gap:18px;align-items:start}
+.pg .vcard{background:var(--soft);border-radius:6px;padding:8px}
+.pg .vcard img{width:100%}
+.pg .sprc{background:#fff;border:1px solid #e4d9ee;padding:4px}
+.pg .ketc{padding:0;background:#fff;overflow:hidden}
+.pg .ketc .kph{width:100%;height:150px;object-fit:cover;object-position:50% 40%;border-radius:6px}
+.pg .tmsc{display:flex;gap:14px;align-items:center;margin-top:6px}
+.pg .tmsph{flex:0 0 96px;background:#fff;border-radius:4px;overflow:hidden}
+.pg .tmsph img{width:100%}
+.pg .brw{flex:1}
+.pg .brw img{width:100%;border-radius:3px}
+.pg .brl{display:flex;justify-content:space-between;font-size:9.2px;font-weight:700;margin-top:4px;color:#111;gap:8px}
+.pg .brc{font-size:8.4px;color:var(--mut);margin-top:3px}
+.pg .fn{font-size:8.2px;line-height:1.4;color:var(--mut)}
+/* sidebar (shared) */
+.pg .sp .sec h5{font-size:12.6px;font-weight:800;letter-spacing:.01em;margin-bottom:5px}
+.pg .sp .sec p{font-size:11.1px;line-height:1.52;margin-bottom:8px}
+.pg .sp h1{font-size:28px;line-height:1.05;font-weight:800;letter-spacing:-.03em}
+.pg .sp .sub{font-size:14px}
+.pg .sp .about{font-size:12px;font-weight:600}
+.pg .sp .stat{font-size:72px;font-weight:800;letter-spacing:-.045em;line-height:1;margin:1px 0 6px}
+.pg .sp hr{border:0;height:1px}
+
+/* ============ EDITION A ============ */
+.fa .hero{flex:0 0 37%;display:grid;grid-template-columns:52% 48%}
+.fa .hero-l{background:#DFC5EE;padding:28px 28px 24px 34px;display:flex;flex-direction:column}
+.fa .hero h1{font-size:31px;line-height:1.05;font-weight:800;letter-spacing:-.035em;margin-top:20px}
+.fa .hero .sub{font-size:13.5px;margin-top:8px}
+.fa .hero .intro{margin-top:12px}
+.fa .hero .pill{margin-top:auto}
+.fa .hero-r{background:#fff;padding:56px 22px 0 14px;display:flex;align-items:flex-end}
+.fa .arch{width:100%;height:100%;border-radius:999px 999px 0 0;overflow:hidden;background:var(--lav)}
+.fa .arch img{width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.fa .grid3{flex:1;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;padding:30px 34px 0}
+.fa .locs{padding:0 34px 22px}
+.fa .lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fa .lc{background:var(--soft);border-radius:5px;padding:12px 13px 13px;border-left:3px solid var(--lav2)}
+.pg .ln{font-size:11.6px;font-weight:700;font-family:'Plus Jakarta Sans',Inter,sans-serif}
+.pg .la{font-size:10.3px;color:var(--mut);line-height:1.4;margin-top:3px}
+.fa .bar{flex:0 0 11%}
+.fa .bar-t{flex:0 0 138px}
+
+.ba{flex-direction:row}
+.ba .sp{flex:0 0 34%;background:var(--blk);color:#fff;padding:26px 22px 22px;display:flex;flex-direction:column;gap:0}
+.ba .sp .logo{height:38px;margin-bottom:20px}
+.ba .sp .sub{color:var(--lav);margin-top:8px}
+.ba .sp hr{background:rgba(255,255,255,.35);margin:14px 0 14px}
+.ba .sp .sec{margin-bottom:26px}
+.ba .sp .sec h5{color:#fff}
+.ba .sp .sec p{color:#e8e6ee}
+.ba .sp .stat{color:var(--lav)}
+.ba .sp .about{color:#fff}
+.ba .sp-bot{margin-top:auto;border-top:1px solid rgba(255,255,255,.35);padding-top:12px}
+.ba .disc{font-family:'Plus Jakarta Sans',Inter,sans-serif;font-size:14px;font-weight:800;line-height:1.25;margin-bottom:10px}
+.ba .sp-cq{display:flex;justify-content:space-between;align-items:flex-end;gap:8px}
+.ba .sp-cq .ctv{font-size:11px}
+.ba .sp-cq .cts.stack .ctl{width:38px;flex-basis:38px}
+.ba .mn{flex:1;padding:24px 26px 18px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-width:0}
+.ba .mn .m-tms{flex:0 0 auto}
+
+/* ============ EDITION B ============ */
+.fb .fb-top,.bb .bb-top{flex:1;display:flex;min-height:0}
+.fb .sp,.bb .sp{flex:0 0 34%;background:#DFC5EE;padding:26px 22px 20px;display:flex;flex-direction:column}
+.fb .sp .logo{height:40px;margin-bottom:26px}
+.fb .sp .sec{margin-bottom:26px}
+.fb .sp h3::before{background:#111}
+.fb .sp .bl li::before{background:#111}
+.fb .sp .sec:last-child,.bb .sp .sec:last-child{margin-top:auto;margin-bottom:6px}
+.fb .llist{display:flex;flex-direction:column;gap:13px}
+.fb .ll{border-top:1px solid rgba(17,17,17,.28);padding-top:8px}
+.fb .ll .la{color:#2c2634}
+.fb .mn{flex:1;padding:30px 28px 18px;display:flex;flex-direction:column;min-width:0}
+.fb h1{font-size:33px;line-height:1.04;font-weight:800;letter-spacing:-.035em}
+.fb .mn .sub{font-size:14px;margin-top:9px}
+.fb .mn .intro{margin-top:12px}
+.fb .mn .pill{margin-top:14px}
+.fb .ph{margin:18px 0 18px;border-radius:200px 200px 6px 6px;overflow:hidden;flex:1;min-height:300px;background:var(--lav)}
+.fb .ph img{width:100%;height:100%;object-fit:cover;object-position:60% 35%}
+.fb .two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fb .bar,.bb .bar{flex:0 0 10.4%}
+.fb .bar-t{flex:0 0 132px}
+
+.bb .sp .logo{height:38px;margin-bottom:20px}
+.bb .sp h1{color:#111}
+.bb .sp .sub{margin-top:8px;color:#111}
+.bb .sp hr{background:#111;opacity:.45;margin:14px 0}
+.bb .sp .sec{margin-bottom:26px}
+.bb .sp .sec p{color:#1c1823}
+.bb .sp .stat{color:#111}
+.bb .mn{flex:1;padding:20px 26px 8px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-width:0}
+.bb .fn{padding:6px 24px 8px}
+.bb .bar{flex:0 0 9%}
+.bb .bar-t{flex:0 0 180px}
+.bb .bar .bt1{font-size:12.5px;line-height:1.25}
+.bb .cts{gap:22px}
+.bb .ctv{font-size:12.5px}
+.k2{display:block}
+[data-ket="1"] .k2{display:none!important}
+[data-ket="2"] .k1{display:none!important}
+
+html,body{margin:0;padding:0;width:1600px;height:1200px;overflow:hidden}
+body{position:relative;font-family:Inter,'Helvetica Neue',Arial,sans-serif;color:#111;
+ background:radial-gradient(1200px 800px at 50% 0%,#F6F2FB 0%,#EFEAF6 60%,#E8E1F1 100%)}
+.hd{position:absolute;left:30px;right:30px;top:22px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #111;padding-bottom:10px}
+.hd b{font-family:'Plus Jakarta Sans',Inter,sans-serif;font-size:20px;letter-spacing:-.02em;font-weight:800}
+.hd span{font-size:10.5px;letter-spacing:.14em;font-weight:600;color:#4B4753}
+.blk{position:absolute;top:84px;width:535px;height:700px}
+.abs{position:absolute}
+.bleedr{position:absolute;box-shadow:0 0 0 .5px rgba(224,36,94,.9)}
+.pgs{position:absolute;overflow:hidden;box-shadow:0 8px 22px rgba(60,30,90,.22)}
+.pgs .pg{transform-origin:0 0}
+.trim{position:absolute;outline:.75px solid #111}
+.safe{position:absolute;outline:.75px dashed #7A4FB0}
+.cm{position:absolute;background:#111}
+.bcap{position:absolute;left:0;right:0;top:664px;text-align:center;font-size:10.5px;letter-spacing:.14em;font-weight:700}
+.bcap i{font-style:normal;font-weight:500;color:#4B4753;letter-spacing:.06em}
+.dimh{position:absolute;font-size:9px;letter-spacing:.1em;font-weight:600;color:#4B4753}
+.leg{position:absolute;left:30px;top:798px;width:1070px;display:flex;gap:26px;font-size:10px;font-weight:600;letter-spacing:.06em;align-items:center}
+.leg .k{display:inline-block;width:26px;height:0;vertical-align:middle;margin-right:7px}
+.sw{position:absolute;top:846px;width:198px;height:262px;background:#fff;box-shadow:0 2px 5px rgba(40,20,60,.1),0 12px 28px rgba(60,30,90,.12)}
+.sw .c{height:130px;border-bottom:1px solid #e5e0ea}
+.sw .n{padding:12px 14px 0;font-family:'Plus Jakarta Sans',Inter,sans-serif;font-weight:800;font-size:14px;letter-spacing:-.01em}
+.sw .u{padding:2px 14px 0;font-size:9.5px;color:#4B4753}
+.sw dl{margin:10px 14px 0;font-size:10.5px;line-height:1.7}
+.sw dt{display:inline;font-size:8.5px;letter-spacing:.16em;font-weight:700;color:#4B4753}
+.sw dd{display:inline;margin:0 0 0 6px;font-weight:600}
+.sw dl div{border-top:1px solid #eee7f3}
+.pnl{position:absolute;left:1130px;width:440px;background:#fff;box-shadow:0 2px 5px rgba(40,20,60,.1),0 12px 28px rgba(60,30,90,.12)}
+.pnl .ph{background:#111;color:#fff;font-size:10px;letter-spacing:.16em;font-weight:700;padding:8px 14px}
+.pnl .pb{padding:12px 14px 14px;font-size:11.2px;line-height:1.55}
+table.sp{border-collapse:collapse;width:100%}
+table.sp td{padding:4.5px 0;border-bottom:1px solid #eee7f3;vertical-align:top}
+table.sp td:first-child{font-size:8.8px;letter-spacing:.14em;font-weight:700;color:#4B4753;width:120px;padding-top:6px}
+.qv{display:flex;gap:16px;align-items:center}
+.qv .qb{background:#fff;border:1px solid #ddd;padding:6px;width:122px;height:122px;flex:0 0 auto}
+.qv .qb img{width:100%;height:100%;display:block}
+.qv .qt{font-size:11px;font-weight:700;text-align:center;margin-top:4px}
+.ok{display:inline-block;background:#DFC5EE;font-size:9px;letter-spacing:.14em;font-weight:700;padding:2px 7px;margin-bottom:5px}
+.dl{list-style:none;margin:0;padding:0}
+.dl li{display:grid;grid-template-columns:62px 1fr auto;gap:10px;align-items:baseline;padding:6px 0;border-bottom:1px solid #eee7f3;font-size:11px}
+.dl li:last-child{border:0}
+.dl .f{font-family:'Plus Jakarta Sans',Inter,sans-serif;font-weight:800;font-size:13px}
+.dl .s{font-size:8.5px;letter-spacing:.14em;font-weight:700;padding:2px 7px;background:#DFC5EE}
+.dl .s.w{background:#eee;color:#4B4753}
+.dl a{color:#111;font-weight:600}
+</style></head><body><div class="hd"><b>Board 4 — Print Production Spec Sheet</b><span>US LETTER 8.5 × 11 IN · TWO-SIDED · 0.125 IN BLEED · EDITION A SHOWN (EDITION B USES THE SAME SPEC)</span></div><div class="blk" style="left:30px"><div class="bleedr" style="left:24.0px;top:24.0px;width:491.02941176470586px;height:631.3235294117646px;background:linear-gradient(90deg,#DFC5EE 52%,#fff 52%) top/100% 37% no-repeat,linear-gradient(#111,#111) bottom/100% 11% no-repeat,#fff"></div><div class="pgs" style="left:31.014705882352942px;top:31.014705882352942px;width:477.0px;height:617.2941176470588px"><div class="pg-wrap" style="width:760px;transform:scale(0.6276315789473684);transform-origin:0 0">
+<section class="pg fa" data-page="front-A">
+  <div class="hero">
+    <div class="hero-l">
+      <img class="logo" src="assets/processed/logo_horizontal_dark_h.png" alt="Hopemark Health">
+      <h1>Comprehensive Psychiatric Care</h1>
+      <div class="sub">Your Trusted Referral Partner</div>
+      <p class="intro">Hopemark Health provides evidence-based psychiatric care for children, adolescents, and adults. Our multidisciplinary team supports accurate diagnosis, individualized treatment, and coordination with referring providers.</p>
+      <div class="pill">In-person or telehealth visits available.</div>
+    </div>
+    <div class="hero-r"><div class="arch"><img src="assets/processed/consultation_color.jpg" alt="Psychiatrist and patient in consultation"></div></div>
+  </div>
+  <div class="grid3">
+    <div class="col"><h3>Clinical Services</h3><ul class="bl"><li>Psychiatric evaluations and medication management</li><li>Psychotherapy</li><li>Neuropsychological testing</li><li>Child and adolescent psychiatry</li><li>Sleep medicine</li><li>Genetic testing – pharmacogenomics</li><li>Substance use treatment and medically assisted recovery</li></ul></div>
+    <div class="col"><h3>Conditions We Treat</h3><ul class="bl"><li>Major depressive disorder</li><li>Anxiety and panic disorders</li><li>Post-traumatic stress disorder (PTSD)</li><li>Bipolar disorder</li><li>Obsessive-compulsive disorder (OCD)</li><li>Substance use disorders</li></ul></div>
+    <div class="col"><h3>Our Clinical Team</h3><ul class="bl"><li>Psychiatrists</li><li>Psychiatric mental health nurse practitioners</li><li>Psychologists</li><li>Physician assistants</li><li>Licensed counselors and therapists</li></ul></div>
+  </div>
+  <div class="locs"><h3>Hopemark Clinic Locations</h3><div class="lgrid"><div class="lc"><div class="ln">Chicago – Millennium Park</div><div class="la">8 S. Michigan Avenue, Suite 1505, Chicago, IL 60603</div></div><div class="lc"><div class="ln">Chicago – West Loop</div><div class="la">566 W. Lake Street, Suite 200, Chicago, IL 60661</div></div><div class="lc"><div class="ln">Hoffman Estates</div><div class="la">1721 Moon Lake Boulevard, Suite 201, Hoffman Estates, IL 60169</div></div><div class="lc"><div class="ln">Naperville</div><div class="la">1284 Rickert Drive, Suite 200, Naperville, IL 60540</div></div><div class="lc"><div class="ln">Oak Brook</div><div class="la">1200 Harger Road, Suite 200, Oak Brook, IL 60523</div></div><div class="lc"><div class="ln">Orland Park</div><div class="la">14489 John Humphrey Drive, Suite 202, Orland Park, IL 60462</div></div></div></div>
+  <div class="bar">
+    <div class="bar-t"><div class="bt1">Contact Information</div><div class="bt2">Referrals and appointments</div></div>
+    <div class="cts "><div class="ct"><span class="ctl">PHONE</span><span class="ctv">630-656-9393</span></div><div class="ct"><span class="ctl">FAX</span><span class="ctv">630-385-0290</span></div><div class="ct"><span class="ctl">WEBSITE</span><span class="ctv">HopeMark.com</span></div></div>
+    <div class="qr "><div class="qrb"><img src="assets/processed/qr_hopemark.svg" alt="QR code for HopeMark.com"></div><div class="qrt">HopeMark.com</div></div>
+  </div>
+</section></div></div><div class="safe" style="left:45.044117647058826px;top:45.044117647058826px;width:448.94117647058823px;height:589.2352941176471px"></div><div class="trim" style="left:31.014705882352942px;top:31.014705882352942px;width:477.0px;height:617.2941176470588px"></div><div class="cm" style="left:9.0px;top:30.614705882352943px;width:12px;height:.8px"></div><div class="cm" style="left:30.614705882352943px;top:9.0px;width:.8px;height:12px"></div><div class="cm" style="left:518.0294117647059px;top:30.614705882352943px;width:12px;height:.8px"></div><div class="cm" style="left:507.61470588235295px;top:9.0px;width:.8px;height:12px"></div><div class="cm" style="left:9.0px;top:647.9088235294117px;width:12px;height:.8px"></div><div class="cm" style="left:30.614705882352943px;top:658.3235294117646px;width:.8px;height:12px"></div><div class="cm" style="left:518.0294117647059px;top:647.9088235294117px;width:12px;height:.8px"></div><div class="cm" style="left:507.61470588235295px;top:658.3235294117646px;width:.8px;height:12px"></div><div class="dimh" style="left:31.014705882352942px;top:2px">8.5 in</div><div class="bcap" style="top:673.3235294117646px">SIDE 1 — FRONT <i>· trim 8.5 × 11 in · with bleed 8.75 × 11.25 in</i></div></div><div class="blk" style="left:585px"><div class="bleedr" style="left:24.0px;top:24.0px;width:491.02941176470586px;height:631.3235294117646px;background:linear-gradient(90deg,#111 34%,#fff 34%)"></div><div class="pgs" style="left:31.014705882352942px;top:31.014705882352942px;width:477.0px;height:617.2941176470588px"><div class="pg-wrap" style="width:760px;transform:scale(0.6276315789473684);transform-origin:0 0">
+<section class="pg ba" data-page="back-A">
+  <aside class="sp">
+    <img class="logo" src="assets/processed/logo_horizontal_white.png" alt="Hopemark Health">
+    <h1>Treatment-Resistant Depression</h1>
+    <div class="sub">More options. Renewed hope.</div>
+    <hr>
+    <div class="sec"><h5>What Is Treatment-Resistant Depression?</h5><p>When depression has not improved enough after at least two antidepressants taken at an adequate dose for an adequate length of time, it may be treatment-resistant depression (TRD).</p><p>Symptoms such as persistent sadness, low energy, and loss of interest can continue to affect everyday life.</p></div>
+    <div class="sec"><h5>How Common Is It?</h5><div class="about">About</div><div class="stat">1 in 3*</div><p>A U.S. study estimated that approximately one-third of adults receiving medication for major depression had treatment-resistant depression.</p></div>
+    <div class="sp-bot">
+      <div class="disc">Discuss treatment options with our team.</div>
+      <div class="sp-cq"><div class="cts stack"><div class="ct"><span class="ctl">PHONE</span><span class="ctv">630-656-9393</span></div><div class="ct"><span class="ctl">FAX</span><span class="ctv">630-385-0290</span></div><div class="ct"><span class="ctl">WEBSITE</span><span class="ctv">HopeMark.com</span></div></div><div class="qr sm"><div class="qrb"><img src="assets/processed/qr_hopemark.svg" alt="QR code for HopeMark.com"></div><div class="qrt">HopeMark.com</div></div></div>
+    </div>
+  </aside>
+  <div class="mn">
+    <div class="callout"><h5>How Hopemark Health Can Help</h5><p>Our team reviews each patient’s symptoms and treatment history to build a personalized plan that may include novel therapies, medication management, and psychotherapy.</p></div>
+    
+<div class="mod m-tms">
+  <div class="mh"><h4>Deep TMS</h4><div class="ms">Deep Transcranial Magnetic Stimulation</div></div>
+  <div class="m2c">
+    <p><b>What it is and how it works:</b> A noninvasive treatment that uses magnetic pulses to stimulate brain networks involved in mood and OCD. FDA-cleared for depression and as an additional treatment for OCD.</p>
+    <p><b>Potential benefits:</b> May reduce persistent depression symptoms. An OCD-specific treatment protocol may reduce obsessive thoughts and compulsive behaviors.</p>
+  </div>
+  <div class="vcard tmsc">
+    <div class="tmsph"><img src="assets/brainsway_tms.jpg" alt="BrainsWay Deep TMS device"></div>
+    <div class="brw">
+      <img src="assets/processed/brains_pair_clean.png" alt="Brain scan pair">
+      <div class="brl"><span>Before TMS</span><span>Potential response after TMS</span></div>
+      <div class="brc">Educational visualization. Results vary.</div>
+    </div>
+  </div>
+</div>
+<div class="mod m-spr">
+  <div class="mh"><h4>Spravato®</h4><div class="ms">Esketamine Nasal Spray</div></div>
+  <div class="mrow">
+    <div class="mtx">
+      <p><b>What it is and how it works:</b> An FDA-approved prescription nasal spray for adults with treatment-resistant depression. It acts on NMDA receptors in the brain’s glutamate system.</p>
+      <p><b>Potential benefits:</b> May reduce depression symptoms, with improvement observed as early as approximately 24 hours in clinical trials. It can be used with or without an oral antidepressant for TRD.</p>
+    </div>
+    <div class="vcard sprc"><img src="assets/spravato.jpg" alt="Spravato nasal spray applicator and logo"></div>
+  </div>
+</div>
+<div class="mod m-ket">
+  <div class="mh"><h4>IV Ketamine</h4></div>
+  <div class="mrow">
+    <div class="mtx">
+      <p><b>What it is and how it works:</b> Low-dose ketamine delivered through an IV. It acts on NMDA receptors in the brain’s glutamate system and is used off-label for depression.</p>
+      <p><b>Potential benefits:</b> May relieve depression symptoms within hours for some patients when standard treatments have not provided enough relief. Additional treatments may be needed to maintain benefits.</p>
+    </div>
+    <div class="vcard ketc"><img class="k1 kph" src="assets/processed/ketamine_official_color.png" alt="Woman resting comfortably in a chair with an eye mask"></div>
+  </div>
+</div>
+    <div class="fn">*In a 2021 U.S. study, an estimated 30.9% of adults with medication-treated major depression had treatment-resistant depression. Source: Zhdanava et al., Journal of Clinical Psychiatry. 2021;82(2):20m13699.</div>
+  </div>
+</section></div></div><div class="safe" style="left:45.044117647058826px;top:45.044117647058826px;width:448.94117647058823px;height:589.2352941176471px"></div><div class="trim" style="left:31.014705882352942px;top:31.014705882352942px;width:477.0px;height:617.2941176470588px"></div><div class="cm" style="left:9.0px;top:30.614705882352943px;width:12px;height:.8px"></div><div class="cm" style="left:30.614705882352943px;top:9.0px;width:.8px;height:12px"></div><div class="cm" style="left:518.0294117647059px;top:30.614705882352943px;width:12px;height:.8px"></div><div class="cm" style="left:507.61470588235295px;top:9.0px;width:.8px;height:12px"></div><div class="cm" style="left:9.0px;top:647.9088235294117px;width:12px;height:.8px"></div><div class="cm" style="left:30.614705882352943px;top:658.3235294117646px;width:.8px;height:12px"></div><div class="cm" style="left:518.0294117647059px;top:647.9088235294117px;width:12px;height:.8px"></div><div class="cm" style="left:507.61470588235295px;top:658.3235294117646px;width:.8px;height:12px"></div><div class="dimh" style="left:31.014705882352942px;top:2px">8.5 in</div><div class="bcap" style="top:673.3235294117646px">SIDE 2 — BACK <i>· black spine bleeds off left, top and bottom</i></div></div><div class="leg"><span><span class="k" style="border-top:2px solid #111"></span>TRIM LINE 8.5 × 11 in</span><span><span class="k" style="border-top:2px solid #E0245E"></span>BLEED 0.125 in</span><span><span class="k" style="border-top:2px dashed #7A4FB0"></span>SAFE AREA 0.25 in</span><span><span class="k" style="border-top:2px solid #111;width:10px"></span>CROP MARKS</span></div><div class="sw" style="left:30px"><div class="c" style="background:#DFC5EE"></div><div class="n">Hopemark Lavender</div><div class="u">Front hero · Edition B spines</div><dl><div><dt>HEX</dt><dd>#DFC5EE</dd></div><div><dt>RGB</dt><dd>223 · 197 · 238</dd></div><div><dt>CMYK≈</dt><dd>6 / 17 / 0 / 7</dd></div></dl></div><div class="sw" style="left:244px"><div class="c" style="background:#111111"></div><div class="n">Rich Black</div><div class="u">Back spine · contact bars · badge</div><dl><div><dt>HEX</dt><dd>#111111</dd></div><div><dt>RGB</dt><dd>17 · 17 · 17</dd></div><div><dt>CMYK≈</dt><dd>0 / 0 / 0 / 93</dd></div><div><dt>BUILD</dt><dd>C60 M40 Y40 K100</dd></div></dl></div><div class="sw" style="left:458px"><div class="c" style="background:#FFFFFF"></div><div class="n">Pure White</div><div class="u">Paper · text on black</div><dl><div><dt>HEX</dt><dd>#FFFFFF</dd></div><div><dt>RGB</dt><dd>255 · 255 · 255</dd></div><div><dt>CMYK≈</dt><dd>0 / 0 / 0 / 0</dd></div></dl></div><div class="sw" style="left:672px"><div class="c" style="background:#C8A8E9"></div><div class="n">Lavender Accent</div><div class="u">Bullets · rules · 1 in 3* stat tint</div><dl><div><dt>HEX</dt><dd>#C8A8E9</dd></div><div><dt>RGB</dt><dd>200 · 168 · 233</dd></div><div><dt>CMYK≈</dt><dd>14 / 28 / 0 / 9</dd></div></dl></div><div class="sw" style="left:886px"><div class="c" style="background:#F4ECF9"></div><div class="n">Soft Lavender</div><div class="u">Location cards · callouts · visual cards</div><dl><div><dt>HEX</dt><dd>#F4ECF9</dd></div><div><dt>RGB</dt><dd>244 · 236 · 249</dd></div><div><dt>CMYK≈</dt><dd>2 / 5 / 0 / 2</dd></div></dl></div><div class="abs" style="left:30px;top:1166px;font-size:9px;color:#4B4753;letter-spacing:.03em;width:1070px">CMYK values are a straight RGB-to-CMYK conversion for reference. Final press values are set from the printer’s ICC profile and a hard proof before release.</div><div class="pnl" style="top:84px"><div class="ph">PRINT SPECIFICATION</div><div class="pb"><table class="sp"><tr><td>TRIM SIZE</td><td>8.5 × 11 in (215.9 × 279.4 mm), portrait</td></tr><tr><td>BLEED</td><td>0.125 in (3.18 mm) on all sides → 8.75 × 11.25 in</td></tr><tr><td>SAFE AREA</td><td>0.25 in inside trim for all text and QR codes</td></tr><tr><td>SIDES</td><td>2 — front (clinic overview) and back (treatment-resistant depression)</td></tr><tr><td>COLOR</td><td>Full-color photography, no grayscale or monochrome filters</td></tr><tr><td>TYPE</td><td>Plus Jakarta Sans + Inter, embedded in the PDF</td></tr><tr><td>ICONS</td><td>None. Contact labels are set as type: PHONE · FAX · WEBSITE</td></tr></table></div></div><div class="pnl" style="top:430px"><div class="ph">LIVE QR VERIFICATION</div><div class="pb"><div class="qv"><div><div class="qb"><img src="assets/processed/qr_hopemark.svg" alt="QR code"></div><div class="qt">HopeMark.com</div></div><div><span class="ok">DECODED · MATCHES</span><br><b>https://hopemark.com/</b><br>The vector file <b>qr_hopemark.svg</b> and the raster copy were both decoded with a QR reader on 2026-11-09. On the flyer the QR sits in a white box with HopeMark.com printed directly beneath it, on the front bar and the back spine.</div></div></div></div><div class="pnl" style="top:736px"><div class="ph">DELIVERABLES</div><div class="pb"><ul class="dl"><li><span class="f">.PDF</span><span>Print-ready 8.5 × 11 in, both sides · <a href="downloads/hopemark-flyer-edition-A-ketamine-option-1.pdf">A</a> · <a href="downloads/hopemark-flyer-edition-B-ketamine-option-2.pdf">B</a></span><span class="s">NOW</span></li><li><span class="f">.PDF</span><span>Press file with 0.125 in bleed and crop marks</span><span class="s w">NOW</span></li><li><span class="f">.SVG</span><span>QR code vector · <a href="assets/processed/qr_hopemark.svg">qr_hopemark.svg</a></span><span class="s">NOW</span></li><li><span class="f">.AI/.EPS</span><span>Editable layered artwork</span><span class="s w">NOW</span></li><li><span class="f">.HTML</span><span>Source of this site · <a href="index.html">index.html</a></span><span class="s">NOW</span></li></ul></div></div></body></html>
